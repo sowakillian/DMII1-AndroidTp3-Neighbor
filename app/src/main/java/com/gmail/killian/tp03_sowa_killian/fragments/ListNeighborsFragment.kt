@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.gmail.killian.tp03_sowa_killian.adapters.ListNeighborHandler
 import com.gmail.killian.tp03_sowa_killian.adapters.ListNeighborsAdapter
 import com.gmail.killian.tp03_sowa_killian.data.NeighborRepository
 import com.gmail.killian.tp03_sowa_killian.databinding.ListNeighborsFragmentBinding
+import com.gmail.killian.tp03_sowa_killian.models.Neighbor
 
-class ListNeighborsFragment: Fragment() {
+class ListNeighborsFragment: Fragment(), ListNeighborHandler {
     private lateinit var binding: ListNeighborsFragmentBinding
 
     /**
@@ -38,5 +40,9 @@ class ListNeighborsFragment: Fragment() {
         val neighbors = NeighborRepository.getInstance().getNeighbours()
         val adapter = ListNeighborsAdapter(neighbors)
         binding.neighborsList.adapter = adapter
+    }
+
+    override fun onDeleteNeighbor(neighbor: Neighbor) {
+        TODO("Not yet implemented")
     }
 }
