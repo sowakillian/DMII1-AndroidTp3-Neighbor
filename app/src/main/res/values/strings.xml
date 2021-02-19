@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TP03_SOWA_KILLIAN</string>
+    <string name="no">Non</string>
+    <string name="the_neighbor_has_not_been_deleted">Le voisin n\'a pas été supprimé</string>
 </resources>

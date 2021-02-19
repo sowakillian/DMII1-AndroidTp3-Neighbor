@@ -1,9 +1,11 @@
 package com.gmail.killian.tp03_sowa_killian.fragments
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -37,12 +39,29 @@ class ListNeighborsFragment: Fragment(), ListNeighborHandler {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val neighbors = NeighborRepository.getInstance().getNeighbours()
-        val adapter = ListNeighborsAdapter(neighbors)
+        val neighbors = NeighborRepository.getInstance().getNeighbors()
+        val adapter = ListNeighborsAdapter(neighbors, this)
         binding.neighborsList.adapter = adapter
     }
 
     override fun onDeleteNeighbor(neighbor: Neighbor) {
-        TODO("Not yet implemented")
+        displayAlertDialog(neighbor)
+    }
+
+    private fun displayAlertDialog(neighbor: Neighbor) {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("Confirmation")
+        builder.setMessage("Voulez-vous supprimer ce voisin ?")
+
+        builder.setPositiveButton(android.R.string.yes) { dialog, which ->
+            NeighborRepository.getInstance().deleteNeighbor(neighbor)
+            binding.neighborsList.adapter?.notifyDataSetChanged()
+        }
+
+        builder.setNegativeButton(android.R.string.no) { dialog, which ->
+            Toast.makeText(context,
+                "Le voisin n'a pas été supprimé", Toast.LENGTH_SHORT).show()
+        }
+        builder.show()
     }
 }

@@ -3,11 +3,12 @@ import com.gmail.killian.tp03_sowa_killian.models.Neighbor
 
 class InMemoryNeighborDataSource : NeighborDataSource {
 
-    override val neighbors: List<Neighbor>
+    override val neighbors: MutableList<Neighbor>
         get() = InMemory_Neighbors
 
     override fun deleteNeighbor(neighbor: Neighbor) {
-        TODO("Not yet implemented")
+        neighbors.removeIf { e -> e.id == neighbor.id  }
+        println("neighbors deleted $neighbors")
     }
 
     override fun createNeighbor(neighbor: Neighbor) {
@@ -23,7 +24,7 @@ class InMemoryNeighborDataSource : NeighborDataSource {
     }
 
     // Liste initial des voisins
-    private val InMemory_Neighbors: List<Neighbor> = listOf(
+    private val InMemory_Neighbors: MutableList<Neighbor> = mutableListOf(
         Neighbor(
             1, "Caroline",
             "https://i.picsum.photos/id/1011/5472/3648.jpg?hmac=Koo9845x2akkVzVFX3xxAc9BCkeGYA9VRVfLE4f0Zzk",

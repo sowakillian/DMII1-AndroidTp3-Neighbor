@@ -21,7 +21,11 @@ class NeighborRepository {
     }
 
     // Méthode qui retourne la liste des voisins
-    fun getNeighbours(): List<Neighbor> = dataSource.neighbors
+    fun getNeighbors(): List<Neighbor> = dataSource.neighbors
+
+    fun deleteNeighbor(neighbor: Neighbor) {
+        dataSource.deleteNeighbor(neighbor)
+    }
 
     companion object {
         private var instance: NeighborRepository? = null
