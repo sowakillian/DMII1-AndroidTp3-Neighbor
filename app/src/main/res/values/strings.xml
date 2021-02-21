@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">TP03_SOWA_KILLIAN</string>
     <string name="no">Non</string>
+    <string name="name">Nom</string>
     <string name="the_neighbor_has_not_been_deleted">Le voisin n\'a pas été supprimé</string>
+    <string name="save">Enregistrer</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="want_you_to_delete_neighbor">Voulez-vous supprimer ce voisin ?</string>
+    <string name="neighbor_has_not_been_deleted">Le voisin n\'a pas été supprimé</string>
+    <string name="phone">Téléphone</string>
+    <string name="website">Site web</string>
+    <string name="address">Adresse</string>
+    <string name="about">A propos</string>
 </resources>

@@ -8,7 +8,6 @@ class InMemoryNeighborDataSource : NeighborDataSource {
 
     override fun deleteNeighbor(neighbor: Neighbor) {
         neighbors.removeIf { e -> e.id == neighbor.id  }
-        println("neighbors deleted $neighbors")
     }
 
     override fun createNeighbor(neighbor: Neighbor) {

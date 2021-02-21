@@ -9,6 +9,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.gmail.killian.tp03_sowa_killian.NavigationListener
+import com.gmail.killian.tp03_sowa_killian.R
 import com.gmail.killian.tp03_sowa_killian.adapters.ListNeighborHandler
 import com.gmail.killian.tp03_sowa_killian.adapters.ListNeighborsAdapter
 import com.gmail.killian.tp03_sowa_killian.data.NeighborRepository
@@ -37,21 +39,33 @@ class ListNeighborsFragment: Fragment(), ListNeighborHandler {
         return binding.root
     }
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val neighbors = NeighborRepository.getInstance().getNeighbors()
         val adapter = ListNeighborsAdapter(neighbors, this)
         binding.neighborsList.adapter = adapter
+
+        listenAddNeighborClicked()
     }
 
     override fun onDeleteNeighbor(neighbor: Neighbor) {
         displayAlertDialog(neighbor)
     }
 
+    private fun listenAddNeighborClicked() {
+        binding.addNeighbor.setOnClickListener {
+            (activity as? NavigationListener)?.let {
+                it.showFragment(AddNeighborFragment())
+            }
+        }
+    }
+
     private fun displayAlertDialog(neighbor: Neighbor) {
         val builder = AlertDialog.Builder(context)
-        builder.setTitle("Confirmation")
-        builder.setMessage("Voulez-vous supprimer ce voisin ?")
+        builder.setTitle(getString(R.string.confirmation))
+        builder.setMessage(getString(R.string.want_you_to_delete_neighbor))
 
         builder.setPositiveButton(android.R.string.yes) { dialog, which ->
             NeighborRepository.getInstance().deleteNeighbor(neighbor)
@@ -60,7 +74,7 @@ class ListNeighborsFragment: Fragment(), ListNeighborHandler {
 
         builder.setNegativeButton(android.R.string.no) { dialog, which ->
             Toast.makeText(context,
-                "Le voisin n'a pas été supprimé", Toast.LENGTH_SHORT).show()
+                getString(R.string.neighbor_has_not_been_deleted), Toast.LENGTH_SHORT).show()
         }
         builder.show()
     }
