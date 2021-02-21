@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.gmail.killian.tp03_sowa_killian.MainActivity
 import com.gmail.killian.tp03_sowa_killian.NavigationListener
 import com.gmail.killian.tp03_sowa_killian.R
 import com.gmail.killian.tp03_sowa_killian.adapters.ListNeighborHandler
@@ -39,8 +40,6 @@ class ListNeighborsFragment: Fragment(), ListNeighborHandler {
         return binding.root
     }
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val neighbors = NeighborRepository.getInstance().getNeighbors()
@@ -48,6 +47,8 @@ class ListNeighborsFragment: Fragment(), ListNeighborHandler {
         binding.neighborsList.adapter = adapter
 
         listenAddNeighborClicked()
+
+        (activity as? NavigationListener)?.updateTitle(R.string.neighbor_list)
     }
 
     override fun onDeleteNeighbor(neighbor: Neighbor) {
@@ -56,9 +57,7 @@ class ListNeighborsFragment: Fragment(), ListNeighborHandler {
 
     private fun listenAddNeighborClicked() {
         binding.addNeighbor.setOnClickListener {
-            (activity as? NavigationListener)?.let {
-                it.showFragment(AddNeighborFragment())
-            }
+            (activity as? NavigationListener)?.showFragment(AddNeighborFragment())
         }
     }
 

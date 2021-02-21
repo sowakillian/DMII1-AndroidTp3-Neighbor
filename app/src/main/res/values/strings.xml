@@ -11,4 +11,6 @@
     <string name="website">Site web</string>
     <string name="address">Adresse</string>
     <string name="about">A propos</string>
+    <string name="neighbor_list">Liste des voisins</string>
+    <string name="new_neighbor">Nouveau voisin</string>
 </resources>

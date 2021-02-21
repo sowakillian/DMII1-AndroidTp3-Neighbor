@@ -9,7 +9,6 @@ import com.gmail.killian.tp03_sowa_killian.fragments.ListNeighborsFragment
 
 class MainActivity : AppCompatActivity(), NavigationListener {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,8 +16,7 @@ class MainActivity : AppCompatActivity(), NavigationListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
+        setSupportActionBar(binding.toolbar)
 
         showFragment(ListNeighborsFragment())
     }
@@ -31,7 +29,7 @@ class MainActivity : AppCompatActivity(), NavigationListener {
     }
 
     override fun updateTitle(title: Int) {
-        toolbar.setTitle(title)
+        binding.toolbar.setTitle(title)
     }
 
 }
