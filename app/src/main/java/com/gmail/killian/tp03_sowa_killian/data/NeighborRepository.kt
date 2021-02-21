@@ -27,6 +27,10 @@ class NeighborRepository {
         dataSource.deleteNeighbor(neighbor)
     }
 
+    fun createNeighbor(neighbor: Neighbor) {
+        dataSource.createNeighbor(neighbor)
+    }
+
     companion object {
         private var instance: NeighborRepository? = null
 
