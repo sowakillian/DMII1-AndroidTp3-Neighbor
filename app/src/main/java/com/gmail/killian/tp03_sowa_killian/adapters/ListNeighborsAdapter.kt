@@ -13,7 +13,7 @@ class ListNeighborsAdapter(
     items: List<Neighbor>,
     val callback: ListNeighborHandler
 ) : RecyclerView.Adapter<ListNeighborsAdapter.ViewHolder>() {
-    private val mNeighbours: List<Neighbor> = items.reversed()
+    private val mNeighbours: List<Neighbor> = items
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding: NeighborItemBinding = NeighborItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
