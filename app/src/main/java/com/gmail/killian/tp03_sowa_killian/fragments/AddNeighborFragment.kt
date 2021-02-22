@@ -3,10 +3,10 @@ package com.gmail.killian.tp03_sowa_killian.fragments
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.gmail.killian.tp03_sowa_killian.listeners.NavigationListener
 import com.gmail.killian.tp03_sowa_killian.R
@@ -59,7 +59,6 @@ class AddNeighborFragment: Fragment() {
     private fun listenSaveClicked() {
         binding.saveButton.setOnClickListener {
             if (isValidate()) {
-                println("it is validated brow")
                 NeighborRepository.getInstance().createNeighbor(
                     Neighbor(
                         UUID.randomUUID().mostSignificantBits,
@@ -72,6 +71,9 @@ class AddNeighborFragment: Fragment() {
                         binding.websiteTf.text.toString()
                     )
                 )
+                Toast.makeText(context,
+                    getString(R.string.neighbor_has_been_added), Toast.LENGTH_SHORT).show()
+                fragmentManager?.popBackStack()
             }
         }
     }
@@ -82,11 +84,11 @@ class AddNeighborFragment: Fragment() {
      */
     private fun validateImage(): Boolean {
         if (binding.imageTf.text.toString().trim().isEmpty()) {
-            binding.imageTfWrapper.error = "Required Field!"
+            binding.imageTfWrapper.error = getString(R.string.required_field)
             binding.imageTf.requestFocus()
             return false
         } else if ( !isValidUrl(binding.imageTf.text.toString())) {
-            binding.imageTfWrapper.error = "Invalid URL!"
+            binding.imageTfWrapper.error =  getString(R.string.invalid_url)
             binding.imageTf.requestFocus()
             return false
         } else {
@@ -100,7 +102,7 @@ class AddNeighborFragment: Fragment() {
      */
     private fun validateName(): Boolean {
         if (binding.nameTf.text.toString().trim().isEmpty()) {
-            binding.nameTfWrapper.error = "Required Field!"
+            binding.nameTfWrapper.error = getString(R.string.required_field)
             binding.nameTf.requestFocus()
             return false
         } else {
@@ -114,11 +116,11 @@ class AddNeighborFragment: Fragment() {
      */
     private fun validatePhone(): Boolean {
         if (binding.phoneTf.text.toString().trim().isEmpty()) {
-            binding.phoneTfWrapper.error = "Required Field!"
+            binding.phoneTfWrapper.error = getString(R.string.required_field)
             binding.phoneTf.requestFocus()
             return false
         } else if ( !isValidPhoneNumber(binding.phoneTf.text.toString())) {
-            binding.phoneTfWrapper.error = "Invalid phone number!"
+            binding.phoneTfWrapper.error =  getString(R.string.invalid_phone_number)
             binding.phoneTf.requestFocus()
             return false
         } else {
@@ -133,11 +135,11 @@ class AddNeighborFragment: Fragment() {
      */
     private fun validateWebsite(): Boolean {
         if (binding.websiteTf.text.toString().trim().isEmpty()) {
-            binding.websiteTfWrapper.error = "Required Field!"
+            binding.websiteTfWrapper.error = getString(R.string.required_field)
             binding.websiteTf.requestFocus()
             return false
         } else if ( !isValidUrl(binding.websiteTf.text.toString())) {
-            binding.websiteTfWrapper.error = "Invalid URL!"
+            binding.websiteTfWrapper.error = getString(R.string.invalid_url)
             binding.websiteTf.requestFocus()
             return false
         } else {
@@ -152,11 +154,11 @@ class AddNeighborFragment: Fragment() {
      */
     private fun validateAddress(): Boolean {
         if (binding.addressTf.text.toString().trim().isEmpty()) {
-            binding.addressTfWrapper.error = "Required Field!"
+            binding.addressTfWrapper.error = getString(R.string.required_field)
             binding.addressTf.requestFocus()
             return false
         } else if (!isValidEmail(binding.addressTf.text.toString())) {
-            binding.addressTfWrapper.error = "Invalid Email!"
+            binding.addressTfWrapper.error =  getString(R.string.invalid_email)
             binding.addressTf.requestFocus()
             return false
         } else {
@@ -172,11 +174,11 @@ class AddNeighborFragment: Fragment() {
     private fun validateAbout(): Boolean {
         println(binding.aboutTf.text.toString().count())
         if (binding.aboutTf.text.toString().trim().isEmpty()) {
-            binding.aboutTfWrapper.error = "Required Field!"
+            binding.aboutTfWrapper.error = getString(R.string.required_field)
             binding.aboutTf.requestFocus()
             return false
         } else if (binding.aboutTf.text.toString().count() > 30) {
-            binding.aboutTfWrapper.error = "Maximum 30 charactères"
+            binding.aboutTfWrapper.error =  getString(R.string.maximum_30_characters)
             binding.aboutTf.requestFocus()
             return false
         } else {

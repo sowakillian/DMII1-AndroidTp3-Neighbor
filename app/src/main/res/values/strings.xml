@@ -7,6 +7,7 @@
     <string name="confirmation">Confirmation</string>
     <string name="want_you_to_delete_neighbor">Voulez-vous supprimer ce voisin ?</string>
     <string name="neighbor_has_not_been_deleted">Le voisin n\'a pas été supprimé</string>
+    <string name="neighbor_has_been_added">Le voisin a été ajouté</string>
     <string name="phone">Téléphone</string>
     <string name="website">Site web</string>
     <string name="address">Adresse</string>
@@ -14,4 +15,9 @@
     <string name="neighbor_list">Liste des voisins</string>
     <string name="new_neighbor">Nouveau voisin</string>
     <string name="image">Image</string>
+    <string name="required_field">Champs requis</string>
+    <string name="invalid_url">URL invalide</string>
+    <string name="invalid_phone_number">Numéro invalide</string>
+    <string name="invalid_email">Email invalide</string>
+    <string name="maximum_30_characters">30 charactères maximum</string>
 </resources>

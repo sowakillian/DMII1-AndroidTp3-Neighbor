@@ -7,6 +7,7 @@
     <string name="confirmation">Confirmation</string>
     <string name="want_you_to_delete_neighbor">Do you want to delete this neighbor ?</string>
     <string name="neighbor_has_not_been_deleted">The neighbor has not been deleted</string>
+    <string name="neighbor_has_been_added">he neigbor has been added</string>
     <string name="phone">Phone</string>
     <string name="website">Website</string>
     <string name="address">Address</string>
@@ -14,4 +15,9 @@
     <string name="neighbor_list">Neighbor list</string>
     <string name="new_neighbor">New neighbor</string>
     <string name="image">Image</string>
+    <string name="required_field">Required field</string>
+    <string name="invalid_url">Invalid URL</string>
+    <string name="invalid_phone_number">Invalid phone number</string>
+    <string name="invalid_email">Invalid email</string>
+    <string name="maximum_30_characters">Maximum 30 characters</string>
 </resources>
