@@ -41,6 +41,9 @@ class AddNeighborFragment: Fragment() {
 
         (activity as? NavigationListener)?.updateTitle(R.string.new_neighbor)
 
+        binding.saveButton.isEnabled = false
+        binding.saveButton.background.alpha = 128;
+
         setupListeners()
 
         listenSaveClicked()
@@ -203,6 +206,14 @@ class AddNeighborFragment: Fragment() {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             // checking ids of each text field and applying functions accordingly.
+            binding.saveButton.isEnabled = isValidate()
+
+            if (isValidate()) {
+                binding.saveButton.background.alpha = 255;
+            } else {
+                binding.saveButton.background.alpha = 128;
+            }
+
             when (view.id) {
                 R.id.imageTf -> {
                     validateImage()
