@@ -2,12 +2,13 @@ package com.gmail.killian.tp03_sowa_killian
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.gmail.killian.tp03_sowa_killian.databinding.ActivityMainBinding
 import com.gmail.killian.tp03_sowa_killian.fragments.ListNeighborsFragment
+import com.gmail.killian.tp03_sowa_killian.listeners.NavigationListener
 
-class MainActivity : AppCompatActivity(), NavigationListener {
+class MainActivity : AppCompatActivity(),
+    NavigationListener {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

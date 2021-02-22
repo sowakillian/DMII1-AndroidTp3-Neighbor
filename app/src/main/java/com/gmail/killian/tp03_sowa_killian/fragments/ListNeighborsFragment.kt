@@ -9,8 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.gmail.killian.tp03_sowa_killian.MainActivity
-import com.gmail.killian.tp03_sowa_killian.NavigationListener
+import com.gmail.killian.tp03_sowa_killian.listeners.NavigationListener
 import com.gmail.killian.tp03_sowa_killian.R
 import com.gmail.killian.tp03_sowa_killian.adapters.ListNeighborHandler
 import com.gmail.killian.tp03_sowa_killian.adapters.ListNeighborsAdapter
