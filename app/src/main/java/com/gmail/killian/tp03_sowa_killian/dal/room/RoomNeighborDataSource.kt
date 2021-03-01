@@ -35,7 +35,11 @@ class RoomNeighborDataSource(application: Application) : NeighborDataSource {
     }
 
     override fun updateFavoriteStatus(neighbor: Neighbor) {
-        dao.updateNeighborFavoriteStatus(neighbor.toEntity(favorite = true))
+        if (neighbor.favorite) {
+            dao.updateNeighborFavoriteStatus(neighbor.toEntity(favorite = false))
+        } else {
+            dao.updateNeighborFavoriteStatus(neighbor.toEntity(favorite = true))
+        }
     }
 
     override fun updateNeighbor(neighbor: Neighbor) {

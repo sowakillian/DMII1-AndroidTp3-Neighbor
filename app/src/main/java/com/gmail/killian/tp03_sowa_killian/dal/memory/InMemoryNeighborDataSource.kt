@@ -25,7 +25,7 @@ class InMemoryNeighborDataSource : NeighborDataSource {
     }
 
     override fun updateFavoriteStatus(neighbor: Neighbor) {
-        TODO("Not yet implemented")
+        _neighbors.postValue(InMemory_Neighbors)
     }
 
     override fun updateNeighbor(neighbor: Neighbor) {
