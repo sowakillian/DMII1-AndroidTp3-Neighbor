@@ -1,10 +1,12 @@
-package com.gmail.killian.tp03_sowa_killian
+package com.gmail.killian.tp03_sowa_killian.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.gmail.killian.tp03_sowa_killian.R
 import com.gmail.killian.tp03_sowa_killian.databinding.ActivityMainBinding
-import com.gmail.killian.tp03_sowa_killian.fragments.ListNeighborsFragment
+import com.gmail.killian.tp03_sowa_killian.di.DI
+import com.gmail.killian.tp03_sowa_killian.ui.fragments.ListNeighborsFragment
 import com.gmail.killian.tp03_sowa_killian.listeners.NavigationListener
 
 class MainActivity : AppCompatActivity(),
@@ -13,6 +15,8 @@ class MainActivity : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        DI.inject(application)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

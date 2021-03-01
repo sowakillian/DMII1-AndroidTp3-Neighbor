@@ -1,5 +1,6 @@
-package com.gmail.killian.tp03_sowa_killian.data.datasource
+package com.gmail.killian.tp03_sowa_killian.dal
 
+import androidx.lifecycle.LiveData
 import com.gmail.killian.tp03_sowa_killian.models.Neighbor
 
 interface NeighborDataSource {
@@ -7,7 +8,7 @@ interface NeighborDataSource {
      * Get all my Neighbors
      * @return [List]
      */
-    val neighbors: List<Neighbor>
+    val neighbors: LiveData<List<Neighbor>>
 
     /**
      * Deletes a neighbor

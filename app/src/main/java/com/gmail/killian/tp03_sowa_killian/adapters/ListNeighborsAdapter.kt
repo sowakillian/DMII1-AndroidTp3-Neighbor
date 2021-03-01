@@ -35,7 +35,6 @@ class ListNeighborsAdapter(
         holder.binding.itemListDeleteButton.setOnClickListener {
             callback.onDeleteNeighbor(neighbor)
         }
-
     }
 
     override fun getItemCount(): Int {
@@ -43,7 +42,5 @@ class ListNeighborsAdapter(
     }
 
     class ViewHolder(val binding: NeighborItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-    }
-
+        RecyclerView.ViewHolder(binding.root)
 }

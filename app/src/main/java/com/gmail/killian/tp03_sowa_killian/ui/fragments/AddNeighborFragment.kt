@@ -1,4 +1,4 @@
-package com.gmail.killian.tp03_sowa_killian.fragments
+package com.gmail.killian.tp03_sowa_killian.ui.fragments
 
 import android.os.Bundle
 import android.text.Editable
@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.gmail.killian.tp03_sowa_killian.listeners.NavigationListener
 import com.gmail.killian.tp03_sowa_killian.R
-import com.gmail.killian.tp03_sowa_killian.data.NeighborRepository
+import com.gmail.killian.tp03_sowa_killian.repositories.NeighborRepository
 import com.gmail.killian.tp03_sowa_killian.databinding.AddNeighborBinding
 import com.gmail.killian.tp03_sowa_killian.helpers.validators.FieldValidators.isValidEmail
 import com.gmail.killian.tp03_sowa_killian.helpers.validators.FieldValidators.isValidPhoneNumber
