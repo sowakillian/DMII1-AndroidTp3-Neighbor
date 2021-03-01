@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.gmail.killian.tp03_sowa_killian.R
 import com.gmail.killian.tp03_sowa_killian.adapters.ListNeighborHandler
 import com.gmail.killian.tp03_sowa_killian.adapters.ListNeighborsAdapter
+import com.gmail.killian.tp03_sowa_killian.communicators.MainCommunicator
 import com.gmail.killian.tp03_sowa_killian.databinding.ListNeighborsFragmentBinding
 import com.gmail.killian.tp03_sowa_killian.di.DI
 import com.gmail.killian.tp03_sowa_killian.listeners.NavigationListener
@@ -25,6 +26,7 @@ import java.util.concurrent.Executors
 class ListNeighborsFragment : Fragment(), ListNeighborHandler {
     private lateinit var binding: ListNeighborsFragmentBinding
     private lateinit var viewModel: NeighborViewModel
+    private lateinit var comm: MainCommunicator
 
     /**
      * Fonction permettant de définir une vue à attacher à un fragment
@@ -42,6 +44,8 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
                 DividerItemDecoration.VERTICAL
             )
         )
+
+        comm = activity as MainCommunicator
         return binding.root
     }
 
@@ -67,6 +71,10 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
                 binding.neighborsList.adapter = adapter
             }
         )
+    }
+
+    override fun onDetailsNeighbor(neighbor: Neighbor) {
+        comm.passNeighbor(neighbor)
     }
 
     override fun onDeleteNeighbor(neighbor: Neighbor) {

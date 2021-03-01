@@ -19,6 +19,8 @@ class NeighborRepository private constructor(application: Application) {
 
     fun deleteNeighbor(neighbor: Neighbor) = dataSource.deleteNeighbor(neighbor)
 
+    fun updateFavoriteStatus(neighbor: Neighbor) = dataSource.updateFavoriteStatus(neighbor)
+
     companion object {
         private var instance: NeighborRepository? = null
 

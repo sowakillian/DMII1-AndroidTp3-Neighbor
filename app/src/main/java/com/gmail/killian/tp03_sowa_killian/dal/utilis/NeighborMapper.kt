@@ -14,7 +14,7 @@ fun NeighborEntity.toNeighbor() = Neighbor(
     webSite = webSite ?: ""
 )
 
-fun Neighbor.toEntity() = NeighborEntity(
+fun Neighbor.toEntity(favorite: Boolean = false) = NeighborEntity(
     id = id,
     name = name,
     avatarUrl = avatarUrl,

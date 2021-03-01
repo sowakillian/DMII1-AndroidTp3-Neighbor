@@ -20,4 +20,11 @@
     <string name="invalid_phone_number">Numéro invalide</string>
     <string name="invalid_email">Email invalide</string>
     <string name="maximum_30_characters">30 charactères maximum</string>
+    <string name="add_to_favourite">Ajouter aux favori</string>
+    <string name="remove_to_favourite">Retirer des favoris</string>
+    <string name="fake_text_to_complete_with_real_bio">Fake text to complete with real bio</string>
+    <string name="fake_name">Fake name</string>
+    <string name="www_fakewebsite_com">www.fakewebsite.com</string>
+    <string name="fakeemail_gmail_com">fakeemail@gmail.com</string>
+    <string name="_0646540556">0646540556</string>
 </resources>

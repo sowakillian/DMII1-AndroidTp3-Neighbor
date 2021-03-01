@@ -35,6 +35,10 @@ class ListNeighborsAdapter(
         holder.binding.itemListDeleteButton.setOnClickListener {
             callback.onDeleteNeighbor(neighbor)
         }
+
+        holder.binding.itemListDetailButton.setOnClickListener {
+            callback.onDetailsNeighbor((neighbor))
+        }
     }
 
     override fun getItemCount(): Int {
