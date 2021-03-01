@@ -77,12 +77,13 @@ class AddNeighborFragment : Fragment() {
                             binding.websiteTf.text.toString()
                         )
                     )
-                    Toast.makeText(
-                        context,
-                        getString(R.string.neighbor_has_been_added), Toast.LENGTH_SHORT
-                    ).show()
-                    fragmentManager?.popBackStack()
                 }
+
+                Toast.makeText(
+                    context,
+                    getString(R.string.neighbor_has_been_added), Toast.LENGTH_SHORT
+                ).show()
+                fragmentManager?.popBackStack()
             }
         }
     }

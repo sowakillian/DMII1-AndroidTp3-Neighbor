@@ -89,8 +89,9 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
             if (application != null) {
                 Executors.newSingleThreadExecutor().execute {
                     DI.repository.deleteNeighbor(neighbor)
-                    binding.neighborsList.adapter?.notifyDataSetChanged()
                 }
+
+                binding.neighborsList.adapter?.notifyDataSetChanged()
             }
         }
 
