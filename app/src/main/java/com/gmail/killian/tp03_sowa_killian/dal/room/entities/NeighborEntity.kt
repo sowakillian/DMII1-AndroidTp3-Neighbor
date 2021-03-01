@@ -13,5 +13,5 @@ class NeighborEntity(
     var phoneNumber: String,
     var aboutMe: String,
     var favorite: Boolean = false,
-    var webSite: String? = null,
+    var webSite: String? = null
 )

@@ -15,12 +15,13 @@ class NeighborRepository private constructor(application: Application) {
 
     fun getNeighbors(): LiveData<List<Neighbor>> = dataSource.neighbors
 
+    fun createNeighbor(neighbor: Neighbor) = dataSource.createNeighbor(neighbor)
+
     fun deleteNeighbor(neighbor: Neighbor) = dataSource.deleteNeighbor(neighbor)
 
     companion object {
         private var instance: NeighborRepository? = null
 
-        // On crée un méthode qui retourne l'instance courante du repository si elle existe ou en crée une nouvelle sinon
         fun getInstance(application: Application): NeighborRepository {
             if (instance == null) {
                 instance = NeighborRepository(application)

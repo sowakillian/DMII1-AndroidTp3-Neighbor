@@ -8,6 +8,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.gmail.killian.tp03_sowa_killian.dal.InMemory_Neighbors
 import com.gmail.killian.tp03_sowa_killian.dal.room.daos.NeighborDao
 import com.gmail.killian.tp03_sowa_killian.dal.room.entities.NeighborEntity
+import com.gmail.killian.tp03_sowa_killian.dal.utilis.toEntity
 import java.util.concurrent.Executors
 
 @Database(
@@ -40,7 +41,7 @@ abstract class NeighborDataBase : RoomDatabase() {
         private fun insertFakeData() {
             Executors.newSingleThreadExecutor().execute {
                 InMemory_Neighbors.forEach {
-                    instance?.neighborDao()?.add(it.toEntity())
+                    instance?.neighborDao()?.createNeighbor(it.toEntity())
                 }
             }
         }

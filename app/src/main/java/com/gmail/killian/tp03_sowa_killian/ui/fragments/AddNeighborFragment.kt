@@ -10,18 +10,18 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.gmail.killian.tp03_sowa_killian.listeners.NavigationListener
 import com.gmail.killian.tp03_sowa_killian.R
-import com.gmail.killian.tp03_sowa_killian.repositories.NeighborRepository
 import com.gmail.killian.tp03_sowa_killian.databinding.AddNeighborBinding
+import com.gmail.killian.tp03_sowa_killian.di.DI
 import com.gmail.killian.tp03_sowa_killian.helpers.validators.FieldValidators.isValidEmail
 import com.gmail.killian.tp03_sowa_killian.helpers.validators.FieldValidators.isValidPhoneNumber
 import com.gmail.killian.tp03_sowa_killian.helpers.validators.FieldValidators.isValidUrl
+import com.gmail.killian.tp03_sowa_killian.listeners.NavigationListener
 import com.gmail.killian.tp03_sowa_killian.models.Neighbor
 import java.util.*
+import java.util.concurrent.Executors
 
-
-class AddNeighborFragment: Fragment() {
+class AddNeighborFragment : Fragment() {
     private lateinit var binding: AddNeighborBinding
 
     /**
@@ -42,7 +42,7 @@ class AddNeighborFragment: Fragment() {
         (activity as? NavigationListener)?.updateTitle(R.string.new_neighbor)
 
         binding.saveButton.isEnabled = false
-        binding.saveButton.background.alpha = 128;
+        binding.saveButton.background.alpha = 128
 
         setupListeners()
 
@@ -64,21 +64,25 @@ class AddNeighborFragment: Fragment() {
     private fun listenSaveClicked() {
         binding.saveButton.setOnClickListener {
             if (isValidate()) {
-                NeighborRepository.getInstance().createNeighbor(
-                    Neighbor(
-                        UUID.randomUUID().mostSignificantBits,
-                        binding.nameTf.text.toString(),
-                        binding.imageTf.text.toString(),
-                        binding.addressTf.text.toString(),
-                        binding.phoneTf.text.toString(),
-                        binding.aboutTf.text.toString(),
-                        false,
-                        binding.websiteTf.text.toString()
+                Executors.newSingleThreadExecutor().execute {
+                    DI.repository.createNeighbor(
+                        Neighbor(
+                            UUID.randomUUID().mostSignificantBits,
+                            binding.nameTf.text.toString(),
+                            binding.imageTf.text.toString(),
+                            binding.addressTf.text.toString(),
+                            binding.phoneTf.text.toString(),
+                            binding.aboutTf.text.toString(),
+                            false,
+                            binding.websiteTf.text.toString()
+                        )
                     )
-                )
-                Toast.makeText(context,
-                    getString(R.string.neighbor_has_been_added), Toast.LENGTH_SHORT).show()
-                fragmentManager?.popBackStack()
+                    Toast.makeText(
+                        context,
+                        getString(R.string.neighbor_has_been_added), Toast.LENGTH_SHORT
+                    ).show()
+                    fragmentManager?.popBackStack()
+                }
             }
         }
     }
@@ -92,8 +96,8 @@ class AddNeighborFragment: Fragment() {
             binding.imageTfWrapper.error = getString(R.string.required_field)
             binding.imageTf.requestFocus()
             return false
-        } else if ( !isValidUrl(binding.imageTf.text.toString())) {
-            binding.imageTfWrapper.error =  getString(R.string.invalid_url)
+        } else if (!isValidUrl(binding.imageTf.text.toString())) {
+            binding.imageTfWrapper.error = getString(R.string.invalid_url)
             binding.imageTf.requestFocus()
             return false
         } else {
@@ -133,8 +137,8 @@ class AddNeighborFragment: Fragment() {
             binding.phoneTfWrapper.error = getString(R.string.required_field)
             binding.phoneTf.requestFocus()
             return false
-        } else if ( !isValidPhoneNumber(binding.phoneTf.text.toString())) {
-            binding.phoneTfWrapper.error =  getString(R.string.invalid_phone_number)
+        } else if (!isValidPhoneNumber(binding.phoneTf.text.toString())) {
+            binding.phoneTfWrapper.error = getString(R.string.invalid_phone_number)
             binding.phoneTf.requestFocus()
             return false
         } else {
@@ -152,7 +156,7 @@ class AddNeighborFragment: Fragment() {
             binding.websiteTfWrapper.error = getString(R.string.required_field)
             binding.websiteTf.requestFocus()
             return false
-        } else if ( !isValidUrl(binding.websiteTf.text.toString())) {
+        } else if (!isValidUrl(binding.websiteTf.text.toString())) {
             binding.websiteTfWrapper.error = getString(R.string.invalid_url)
             binding.websiteTf.requestFocus()
             return false
@@ -172,7 +176,7 @@ class AddNeighborFragment: Fragment() {
             binding.addressTf.requestFocus()
             return false
         } else if (!isValidEmail(binding.addressTf.text.toString())) {
-            binding.addressTfWrapper.error =  getString(R.string.invalid_email)
+            binding.addressTfWrapper.error = getString(R.string.invalid_email)
             binding.addressTf.requestFocus()
             return false
         } else {
@@ -192,7 +196,7 @@ class AddNeighborFragment: Fragment() {
             binding.aboutTf.requestFocus()
             return false
         } else if (binding.aboutTf.text.toString().count() > 30) {
-            binding.aboutTfWrapper.error =  getString(R.string.maximum_30_characters)
+            binding.aboutTfWrapper.error = getString(R.string.maximum_30_characters)
             binding.aboutTf.requestFocus()
             return false
         } else {
@@ -209,9 +213,9 @@ class AddNeighborFragment: Fragment() {
             binding.saveButton.isEnabled = isValidate()
 
             if (isValidate()) {
-                binding.saveButton.background.alpha = 255;
+                binding.saveButton.background.alpha = 255
             } else {
-                binding.saveButton.background.alpha = 128;
+                binding.saveButton.background.alpha = 128
             }
 
             when (view.id) {

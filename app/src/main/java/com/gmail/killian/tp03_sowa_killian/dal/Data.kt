@@ -1,6 +1,5 @@
 package com.gmail.killian.tp03_sowa_killian.dal
 
-import androidx.lifecycle.LiveData
 import com.gmail.killian.tp03_sowa_killian.models.Neighbor
 
 // Liste initial des voisins
