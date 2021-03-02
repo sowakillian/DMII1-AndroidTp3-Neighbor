@@ -25,6 +25,7 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
     private lateinit var binding: ListNeighborsFragmentBinding
     private lateinit var viewModel: NeighborViewModel
     private lateinit var comm: MainCommunicator
+    var inMemory: Boolean = false
 
     /**
      * Fonction permettant de définir une vue à attacher à un fragment
@@ -55,9 +56,25 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_main, menu);
+        inflater.inflate(R.menu.menu_main, menu)
 
         super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.option_db -> {
+                inMemory = false
+            }
+
+            R.id.option_memory -> {
+                inMemory = true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
+
+        return true
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -70,11 +87,26 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
     }
 
     private fun setData() {
+        when (inMemory) {
+            false -> setDataFromDataBase()
+            true -> setDataFromMemory()
+        }
+    }
+
+    private fun setDataFromMemory() {
+        val neighbors = DI.repository.getInMemoryNeighbors()
+        val adapter = ListNeighborsAdapter(neighbors, this)
+        binding.neighborsList.adapter = adapter
+        binding.neighborsList.adapter?.notifyDataSetChanged()
+    }
+
+    private fun setDataFromDataBase() {
         viewModel.neighbors.observe(
             viewLifecycleOwner,
             Observer<List<Neighbor>> { t ->
                 val adapter = ListNeighborsAdapter(t, this@ListNeighborsFragment)
                 binding.neighborsList.adapter = adapter
+                binding.neighborsList.adapter?.notifyDataSetChanged()
             }
         )
     }

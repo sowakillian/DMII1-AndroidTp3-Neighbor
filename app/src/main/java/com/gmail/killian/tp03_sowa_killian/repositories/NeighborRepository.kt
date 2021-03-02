@@ -2,6 +2,7 @@ package com.gmail.killian.tp03_sowa_killian.repositories
 
 import android.app.Application
 import androidx.lifecycle.LiveData
+import com.gmail.killian.tp03_sowa_killian.dal.InMemory_Neighbors
 import com.gmail.killian.tp03_sowa_killian.dal.NeighborDataSource
 import com.gmail.killian.tp03_sowa_killian.dal.room.RoomNeighborDataSource
 import com.gmail.killian.tp03_sowa_killian.models.Neighbor
@@ -14,6 +15,8 @@ class NeighborRepository private constructor(application: Application) {
     }
 
     fun getNeighbors(): LiveData<List<Neighbor>> = dataSource.neighbors
+
+    fun getInMemoryNeighbors(): List<Neighbor> = InMemory_Neighbors
 
     fun createNeighbor(neighbor: Neighbor) = dataSource.createNeighbor(neighbor)
 

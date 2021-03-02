@@ -1,7 +1,7 @@
 package com.gmail.killian.tp03_sowa_killian.dal.room.daos
 
 import androidx.lifecycle.LiveData
-import androidx.room.*
+import androidx.room.* // ktlint-disable no-wildcard-imports
 import com.gmail.killian.tp03_sowa_killian.dal.room.entities.NeighborEntity
 
 @Dao

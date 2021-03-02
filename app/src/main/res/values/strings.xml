@@ -30,4 +30,6 @@
     <string name="test">Retirer des favoris</string>
     <string name="neighbor_details">Détail du voisin</string>
     <string name="mail_address">Addresse mail</string>
+    <string name="db_datas">Données de la DB</string>
+    <string name="memory_datas">Données en mémoire</string>
 </resources>
