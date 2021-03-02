@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.gmail.killian.tp03_sowa_killian.R
 import com.gmail.killian.tp03_sowa_killian.databinding.NeighborDetailFragmentBinding
 import com.gmail.killian.tp03_sowa_killian.di.DI
@@ -44,6 +46,16 @@ class NeighborDetailFragment : Fragment() {
         binding.addressTv.text = neighbor.address
         binding.phoneTv.text = neighbor.phoneNumber
         binding.websiteTv.text = neighbor.webSite
+
+        context?.let {
+            Glide.with(it)
+                .load(neighbor.avatarUrl)
+                .apply(RequestOptions.circleCropTransform())
+                .placeholder(R.drawable.ic_person)
+                .error(R.drawable.ic_person)
+                .skipMemoryCache(false)
+                .into(binding.profilePhotoIv)
+        }
 
         if (neighbor.favorite) {
             isFavorite = true
