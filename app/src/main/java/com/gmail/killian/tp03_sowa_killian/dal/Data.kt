@@ -7,7 +7,7 @@ val InMemory_Neighbors: MutableList<Neighbor> = mutableListOf(
     Neighbor(
         1, "Caroline",
         "https://i.picsum.photos/id/1011/5472/3648.jpg?hmac=Koo9845x2akkVzVFX3xxAc9BCkeGYA9VRVfLE4f0Zzk",
-        "Saint-Pierre-du-Mont ; 5km",
+        "fakeemail@gmail.com",
         "+33 6 86 57 90 14",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
             "Pellentesque porttitor id sem ut blandit. Lorem ipsum dolor sit amet, " +
@@ -21,7 +21,7 @@ val InMemory_Neighbors: MutableList<Neighbor> = mutableListOf(
         2,
         "Jack",
         "https://i.picsum.photos/id/1012/3973/2639.jpg?hmac=s2eybz51lnKy2ZHkE2wsgc6S81fVD1W2NKYOSh8bzDc",
-        "Saint-Pierre-du-Mont ; 5km",
+        "fakeemail@gmail.com",
         "+33 6 00 55 90 14",
         (
             "Sed eget fringilla mauris, ac rutrum mauris. Curabitur finibus felis id justo porttitor, " +
@@ -154,7 +154,7 @@ val InMemory_Neighbors: MutableList<Neighbor> = mutableListOf(
         11,
         "Patrick",
         "https://i.picsum.photos/id/91/3504/2336.jpg?hmac=tK6z7RReLgUlCuf4flDKeg57o6CUAbgklgLsGL0UowU",
-        "Saint-Pierre-du-Mont ; 5km",
+        "fakeemail@gmail.com",
         "+33 6 20 40 60 80",
         (
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce porttitor molestie " +
@@ -176,7 +176,7 @@ val InMemory_Neighbors: MutableList<Neighbor> = mutableListOf(
         12,
         "Ludovic",
         "https://i.picsum.photos/id/804/6000/3376.jpg?hmac=AZ4VZdij0jPu8BKZRbiE2lEMJGGjSFv43ii3RHRugco",
-        "Saint-Pierre-du-Mont ; 5km",
+        "fakeemail@gmail.com",
         "+33 6 00 01 10 11",
         (
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce porttitor molestie " +
