@@ -15,6 +15,7 @@ import java.util.concurrent.Executors
 class NeighborDetailFragment : Fragment() {
     private lateinit var binding: NeighborDetailFragmentBinding
     var neighborSelected: Neighbor? = null
+    var isFavorite: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,7 +33,7 @@ class NeighborDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (activity as? NavigationListener)?.updateTitle(R.string.new_neighbor)
+        (activity as? NavigationListener)?.updateTitle(R.string.neighbor_details)
 
         listenFavClicked()
     }
@@ -45,19 +46,22 @@ class NeighborDetailFragment : Fragment() {
         binding.websiteTv.text = neighbor.webSite
 
         if (neighbor.favorite) {
+            isFavorite = true
             binding.addFavoriteButton.text = getString(R.string.remove_to_favourite)
         } else {
+            isFavorite = false
             binding.addFavoriteButton.text = getString(R.string.add_to_favourite)
         }
     }
 
     private fun listenFavClicked() {
         binding.addFavoriteButton.setOnClickListener {
-            println("cc")
             neighborSelected?.let {
-                if (it.favorite) {
+                if (isFavorite) {
+                    isFavorite = false
                     binding.addFavoriteButton.text = getString(R.string.add_to_favourite)
                 } else {
+                    isFavorite = true
                     binding.addFavoriteButton.text = getString(R.string.remove_to_favourite)
                 }
             }

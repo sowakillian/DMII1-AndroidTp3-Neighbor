@@ -58,7 +58,10 @@
 
     <TextView
         android:id="@+id/aboutTv"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:textAlignment="center"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/addFavoriteButton"
         app:layout_constraintStart_toStartOf="parent"
